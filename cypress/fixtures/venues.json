@@ -1,0 +1,40 @@
+[
+  {
+    "id": "1",
+    "name": "Almost Famous",
+    "excerpt": "Here's something new to Leeds: an ultra-cool burger bar.",
+    "img": "http://leedsbeer.info/wp-content/uploads/2014/08/IMG_20140826_174337.jpg",
+    "address": "23-25 Great George St, Leeds LS1 3AL",
+    "beerRating": 3,
+    "atmosphereRating": 4.5,
+    "amenitiesRating": 3,
+    "valueRating": 3,
+    "tags": ["food"]
+  },
+  {
+    "id": "2",
+    "name": "Angelica",
+    "excerpt": "Atop Trinity shopping centre, this bar will delight those who love a good roof garden.",
+    "img": "http://leedsbeer.info/wp-content/uploads/2014/05/IMG_20140505_133542.jpg",
+    "address": "Level 6, Trinity Leeds, 70 Boar Lane, Leeds LS1 6HW",
+    "phone": "0113 897 0099",
+    "beerRating": 3,
+    "atmosphereRating": 4,
+    "amenitiesRating": 3,
+    "valueRating": 1.5,
+    "tags": ["beer garden", "coffee", "food"]
+  },
+  {
+    "id": "3",
+    "name": "Archie's Bar & Kitchen",
+    "excerpt": "Ossett complete their dominance of Granary Wharf with this disco kitchen.",
+    "img": "http://leedsbeer.info/wp-content/uploads/2015/09/IMG_20150918_175536338.jpg",
+    "address": "Arches V & W, The Dark Arches, Granary Wharf, Leeds LS1 4BR",
+    "phone": "0113 243 1001",
+    "beerRating": 3,
+    "atmosphereRating": 3.5,
+    "amenitiesRating": 4.5,
+    "valueRating": 3,
+    "tags": ["beer garden", "breakfast", "coffee", "dance floor", "food", "jukebox"]
+  }
+]
