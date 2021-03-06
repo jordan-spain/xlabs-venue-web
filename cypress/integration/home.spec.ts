@@ -10,11 +10,14 @@ describe('home page', () => {
   });
 
   it('displays appropriate error message when initial venue fetch fails', () => {
+    cy.findByText('Failed to retrieve venues.').should('not.exist');
+
     cy.intercept('api/venues', {
       statusCode: 500,
       body: 'Error',
     });
 
+    cy.findByText('Failed to retrieve venues.').should('be.visible');
     cy.findByText("Oops, something's gone wrong. Please try again.").should('be.visible');
   });
 });

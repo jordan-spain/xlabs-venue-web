@@ -3,6 +3,7 @@ import NavBar from './components/nav-bar/NavBar';
 import Venue from './api/models/Venue';
 import { getAllVenues } from './api/actions/VenueActions';
 import Wrap from './components/wrap/Wrap';
+import ErrorPanel from './components/error-panel/ErrorPanel';
 
 const App = () => {
   const [venues, setVenues] = useState<Venue[]>();
@@ -26,7 +27,7 @@ const App = () => {
   return (
     <div>
       <NavBar />
-      <Wrap>{error && <div>Oops, something's gone wrong. Please try again.</div>}</Wrap>
+      <Wrap>{error && <ErrorPanel title="Failed to retrieve venues." />}</Wrap>
     </div>
   );
 };
