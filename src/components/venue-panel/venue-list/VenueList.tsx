@@ -1,29 +1,10 @@
 import React from 'react';
 import Venue from '../../../api/models/Venue';
-import StarRatings from 'react-star-ratings';
+import VenueRating from '../venue-rating/VenueRating';
 
 interface Props {
   venues: Venue[];
 }
-
-interface RatingProps {
-  text: string;
-  rating: number;
-}
-
-const Rating = ({ text, rating }: RatingProps) => (
-  <div className="flex flex-col">
-    {text}
-    <StarRatings
-      rating={rating}
-      isSelectable={false}
-      numberOfStars={5}
-      isAggregateRating={true}
-      starDimension="15px"
-      starSpacing="1px"
-    />
-  </div>
-);
 
 const VenueList = ({ venues }: Props) => {
   return (
@@ -55,10 +36,21 @@ const VenueList = ({ venues }: Props) => {
                   </div>
                   <span className="my-1 border-t-2 border-gray-300" />
                   <div className="grid grid-cols-4 gap-1 my-2">
-                    <Rating text="BEER" rating={venue.beerRating} />
-                    <Rating text="AMENITIES" rating={venue.amenitiesRating} />
-                    <Rating text="ATMOSPHERE" rating={venue.atmosphereRating} />
-                    <Rating text="VALUE" rating={venue.valueRating} />
+                    <VenueRating text="BEER" rating={venue.beerRating} />
+                    <VenueRating text="AMENITIES" rating={venue.amenitiesRating} />
+                    <VenueRating text="ATMOSPHERE" rating={venue.atmosphereRating} />
+                    <VenueRating text="VALUE" rating={venue.valueRating} />
+                  </div>
+                  <span className="my-1 border-t-2 border-gray-300" />
+                  <div data-testid="tags" className="space-x-1">
+                    {venue.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-sm inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-blue-200 text-blue-700 rounded-md"
+                      >
+                        {tag}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>

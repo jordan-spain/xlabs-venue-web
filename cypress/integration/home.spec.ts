@@ -37,6 +37,13 @@ describe('home page', () => {
       cy.findByTestId('details')
         .should('contain', 'Where: 23-25 Great George St, Leeds LS1 3AL')
         .and('contain', 'Phone: Unknown');
+
+      cy.findByTestId('tags').within(() => {
+        cy.get('span').should(($span) => {
+          expect($span).to.have.length(1);
+          expect($span.eq(0).text().toUpperCase()).to.contain('FOOD');
+        });
+      });
     });
 
     cy.findByTestId('venue-id-2').within(() => {
@@ -50,6 +57,15 @@ describe('home page', () => {
       cy.findByTestId('details')
         .should('contain', 'Where: Level 6, Trinity Leeds, 70 Boar Lane, Leeds LS1 6HW')
         .and('contain', 'Phone: 0113 897 0099');
+
+      cy.findByTestId('tags').within(() => {
+        cy.get('span').should(($span) => {
+          expect($span).to.have.length(3);
+          expect($span.eq(0).text().toUpperCase()).to.contain('BEER GARDEN');
+          expect($span.eq(1).text().toUpperCase()).to.contain('COFFEE');
+          expect($span.eq(2).text().toUpperCase()).to.contain('FOOD');
+        });
+      });
     });
 
     cy.findByTestId('venue-id-3').within(() => {
@@ -61,6 +77,18 @@ describe('home page', () => {
       cy.findByTestId('details')
         .should('contain', 'Where: Arches V & W, The Dark Arches, Granary Wharf, Leeds LS1 4BR')
         .and('contain', 'Phone: 0113 243 1001');
+
+      cy.findByTestId('tags').within(() => {
+        cy.get('span').should(($span) => {
+          expect($span).to.have.length(6);
+          expect($span.eq(0).text().toUpperCase()).to.contain('BEER GARDEN');
+          expect($span.eq(1).text().toUpperCase()).to.contain('BREAKFAST');
+          expect($span.eq(2).text().toUpperCase()).to.contain('COFFEE');
+          expect($span.eq(3).text().toUpperCase()).to.contain('DANCE FLOOR');
+          expect($span.eq(4).text().toUpperCase()).to.contain('FOOD');
+          expect($span.eq(5).text().toUpperCase()).to.contain('JUKEBOX');
+        });
+      });
     });
   });
 
