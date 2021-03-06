@@ -63,4 +63,33 @@ describe('home page', () => {
         .and('contain', 'Phone: 0113 243 1001');
     });
   });
+
+  it('filter the displayed venues based on the search value', () => {
+    cy.intercept('api/venues', {
+      fixture: 'venues.json',
+    });
+
+    cy.findByText('Almost Famous').should('be.visible');
+    cy.findByText('Angelica').should('be.visible');
+    cy.findByText("Archie's Bar & Kitchen").should('be.visible');
+
+    cy.findByLabelText('Search').invoke('attr', 'placeholder').should('equal', 'search by venue name');
+    cy.findByLabelText('Search').type('a');
+
+    cy.findByText('Almost Famous').should('be.visible');
+    cy.findByText('Angelica').should('be.visible');
+    cy.findByText("Archie's Bar & Kitchen").should('be.visible');
+
+    cy.findByLabelText('Search').type('n');
+
+    cy.findByText('Angelica').should('be.visible');
+    cy.findByText('Almost Famous').should('not.exist');
+    cy.findByText("Archie's Bar & Kitchen").should('not.exist');
+
+    cy.findByLabelText('Search').clear();
+
+    cy.findByText('Almost Famous').should('be.visible');
+    cy.findByText('Angelica').should('be.visible');
+    cy.findByText("Archie's Bar & Kitchen").should('be.visible');
+  });
 });

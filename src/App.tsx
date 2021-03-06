@@ -9,6 +9,7 @@ import VenueList from './components/venue-list/VenueList';
 const App = () => {
   const [venues, setVenues] = useState<Venue[]>([]);
   const [error, setError] = useState<boolean>(false);
+  const [searchValue, setSearchValue] = useState<string>('');
 
   useEffect(() => {
     setError(false);
@@ -30,7 +31,21 @@ const App = () => {
       <NavBar />
       <Wrap>
         {error && <ErrorPanel title="Failed to retrieve venues." />}
-        <VenueList venues={venues} />
+        {venues.length > 0 && (
+          <div className="flex flex-col">
+            <input
+              type="input"
+              className="text-center text-4xl border-b-4 border-black focus:outline-none mx-auto my-5"
+              name="filter"
+              aria-label="Search"
+              placeholder="search by venue name"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchValue(e.target.value)}
+            />
+            <VenueList
+              venues={venues.filter((venue) => venue.name.toUpperCase().includes(searchValue.toUpperCase()))}
+            />
+          </div>
+        )}
       </Wrap>
     </div>
   );
