@@ -46,15 +46,15 @@ const VenueList = ({ venues }: Props) => {
                 <span className="font-bold text-md">{venue.name}</span>
                 <span className="text-gray-600 text-md">{venue.excerpt}</span>
                 <span className="my-1 border-t-2 border-gray-300" />
-                <div className="text-sm my-1 flex flex-col">
+                <div className="text-sm my-1 flex flex-col space-y-2">
                   <div>
-                    <span className="font-bold text-gray-600 my-1">Where:</span> {venue.address}
+                    <span className="font-bold text-gray-600">Where:</span> {venue.address}
                   </div>
                   <div>
-                    <span className="font-bold text-gray-600 my-1">Phone:</span> {venue.phone ?? 'Unknown'}
+                    <span className="font-bold text-gray-600">Phone:</span> {venue.phone ?? 'Unknown'}
                   </div>
                   <span className="my-1 border-t-2 border-gray-300" />
-                  <div className="grid grid-cols-4 gap-1">
+                  <div className="grid grid-cols-4 gap-1 my-2">
                     <Rating text="BEER" rating={venue.beerRating} />
                     <Rating text="AMENITIES" rating={venue.amenitiesRating} />
                     <Rating text="ATMOSPHERE" rating={venue.atmosphereRating} />
