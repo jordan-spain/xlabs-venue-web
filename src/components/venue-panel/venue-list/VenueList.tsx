@@ -1,5 +1,5 @@
 import React from 'react';
-import Venue from '../../api/models/Venue';
+import Venue from '../../../api/models/Venue';
 
 interface Props {
   venues: Venue[];

@@ -4,12 +4,11 @@ import Venue from './api/models/Venue';
 import { getAllVenues } from './api/actions/VenueActions';
 import Wrap from './components/wrap/Wrap';
 import ErrorPanel from './components/error-panel/ErrorPanel';
-import VenueList from './components/venue-list/VenueList';
+import VenuePanel from './components/venue-panel/VenuePanel';
 
 const App = () => {
   const [venues, setVenues] = useState<Venue[]>([]);
   const [error, setError] = useState<boolean>(false);
-  const [searchValue, setSearchValue] = useState<string>('');
 
   useEffect(() => {
     setError(false);
@@ -31,21 +30,7 @@ const App = () => {
       <NavBar />
       <Wrap>
         {error && <ErrorPanel title="Failed to retrieve venues." />}
-        {venues.length > 0 && (
-          <div className="flex flex-col">
-            <input
-              type="input"
-              className="text-center text-4xl border-b-4 border-black focus:outline-none mx-auto my-5"
-              name="filter"
-              aria-label="Search"
-              placeholder="search by venue name"
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchValue(e.target.value)}
-            />
-            <VenueList
-              venues={venues.filter((venue) => venue.name.toUpperCase().includes(searchValue.toUpperCase()))}
-            />
-          </div>
-        )}
+        {venues.length > 0 && <VenuePanel venues={venues} />}
       </Wrap>
     </div>
   );
