@@ -60,6 +60,17 @@ const VenueList = ({ venues }: Props) => {
                     <Rating text="ATMOSPHERE" rating={venue.atmosphereRating} />
                     <Rating text="VALUE" rating={venue.valueRating} />
                   </div>
+                  <span className="my-1 border-t-2 border-gray-300" />
+                  <div data-testid="tags" className="space-x-1">
+                    {venue.tags.map((tag) => (
+                      <span
+                        key="tag"
+                        className="text-sm inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-blue-200 text-blue-700 rounded-md"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </figcaption>
