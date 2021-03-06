@@ -26,7 +26,7 @@ const App = () => {
   }, [setVenues, setError]);
 
   return (
-    <div>
+    <div className="font-mono">
       <NavBar />
       <Wrap>
         {error && <ErrorPanel title="Failed to retrieve venues." />}

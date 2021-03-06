@@ -34,8 +34,9 @@ describe('home page', () => {
       cy.findByTestId('venue-thumbnail')
         .should('have.attr', 'src')
         .should('equal', 'http://leedsbeer.info/wp-content/uploads/2014/08/IMG_20140826_174337.jpg');
-      cy.findByText('Where: 23-25 Great George St, Leeds LS1 3AL').should('be.visible');
-      cy.findByText('Phone: Unknown').should('be.visible');
+      cy.findByTestId('details')
+        .should('contain', 'Where: 23-25 Great George St, Leeds LS1 3AL')
+        .and('contain', 'Phone: Unknown');
     });
 
     cy.findByTestId('venue-id-2').within(() => {
@@ -46,8 +47,9 @@ describe('home page', () => {
       cy.findByTestId('venue-thumbnail')
         .should('have.attr', 'src')
         .should('equal', 'http://leedsbeer.info/wp-content/uploads/2014/05/IMG_20140505_133542.jpg');
-      cy.findByText('Where: Level 6, Trinity Leeds, 70 Boar Lane, Leeds LS1 6HW').should('be.visible');
-      cy.findByText('Phone: 0113 897 0099').should('be.visible');
+      cy.findByTestId('details')
+        .should('contain', 'Where: Level 6, Trinity Leeds, 70 Boar Lane, Leeds LS1 6HW')
+        .and('contain', 'Phone: 0113 897 0099');
     });
 
     cy.findByTestId('venue-id-3').within(() => {
@@ -56,8 +58,9 @@ describe('home page', () => {
       cy.findByTestId('venue-thumbnail')
         .should('have.attr', 'src')
         .should('equal', 'http://leedsbeer.info/wp-content/uploads/2015/09/IMG_20150918_175536338.jpg');
-      cy.findByText('Where: Arches V & W, The Dark Arches, Granary Wharf, Leeds LS1 4BR').should('be.visible');
-      cy.findByText('Phone: 0113 243 1001').should('be.visible');
+      cy.findByTestId('details')
+        .should('contain', 'Where: Arches V & W, The Dark Arches, Granary Wharf, Leeds LS1 4BR')
+        .and('contain', 'Phone: 0113 243 1001');
     });
   });
 });
