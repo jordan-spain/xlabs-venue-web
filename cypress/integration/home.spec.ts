@@ -21,7 +21,7 @@ describe('home page', () => {
     cy.findByText("Oops, something's gone wrong. Please try again.").should('be.visible');
   });
 
-  it.only('displays all venues in the response', () => {
+  it('displays all venues in the response', () => {
     cy.findByTestId('venue-id-1').should('not.exist');
 
     cy.intercept('api/venues', {
