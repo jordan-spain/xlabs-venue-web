@@ -8,7 +8,7 @@ export const getAllVenues = async (): Promise<Remote<Venue[]>> => {
   const client: HttpClient = new HttpClient();
 
   try {
-    const response = await client.get<Venue[]>('api/venues');
+    const response = await client.get<Venue[]>('/venues');
     return {
       data: response,
     };

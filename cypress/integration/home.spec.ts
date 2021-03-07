@@ -12,7 +12,7 @@ describe('home page', () => {
   it('displays appropriate error message when initial venue fetch fails', () => {
     cy.findByText('Failed to retrieve venues.').should('not.exist');
 
-    cy.intercept('api/venues', {
+    cy.intercept('/venues', {
       statusCode: 500,
       body: 'Error',
     });
@@ -24,7 +24,7 @@ describe('home page', () => {
   it('displays all venues in the response', () => {
     cy.findByTestId('venue-id-1').should('not.exist');
 
-    cy.intercept('api/venues', {
+    cy.intercept('/venues', {
       fixture: 'venues.json',
     });
 
@@ -93,7 +93,7 @@ describe('home page', () => {
   });
 
   it('filter the displayed venues based on the search value', () => {
-    cy.intercept('api/venues', {
+    cy.intercept('/venues', {
       fixture: 'venues.json',
     });
 

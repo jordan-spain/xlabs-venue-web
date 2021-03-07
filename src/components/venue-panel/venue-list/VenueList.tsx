@@ -46,7 +46,7 @@ const VenueList = ({ venues }: Props) => {
                     {venue.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="text-sm inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-blue-200 text-blue-700 rounded-md"
+                        className="text-sm inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-blue-200 text-blue-700 rounded-md mt-1"
                       >
                         {tag}
                       </span>
