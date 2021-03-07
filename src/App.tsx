@@ -9,9 +9,11 @@ import VenuePanel from './components/venue-panel/VenuePanel';
 const App = () => {
   const [venues, setVenues] = useState<Venue[]>([]);
   const [error, setError] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     setError(false);
+    setLoading(true);
 
     async function loadVenues() {
       var response = await getAllVenues();
@@ -20,6 +22,7 @@ const App = () => {
       } else {
         setVenues(response.data ?? []);
       }
+      setLoading(false);
     }
 
     loadVenues();
@@ -29,8 +32,16 @@ const App = () => {
     <div className="font-mono">
       <NavBar />
       <Wrap>
-        {error && <ErrorPanel title="Failed to retrieve venues." />}
-        {venues.length > 0 && <VenuePanel venues={venues} />}
+        {loading ? (
+          <div className="flex flex-center">
+            <strong className="animate-pulse mt-5 text-center text-4xl w-screen">loading, please wait...</strong>
+          </div>
+        ) : (
+          <>
+            {error && <ErrorPanel title="Failed to retrieve venues." />}
+            {venues.length > 0 && <VenuePanel venues={venues} />}
+          </>
+        )}
       </Wrap>
     </div>
   );

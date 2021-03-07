@@ -23,7 +23,7 @@ const VenueList = ({ venues }: Props) => {
           />
           <div className="flex flex-col my-5 pt-6 p-8 text-left">
             <figcaption data-testid="details" className="flex flex-col text-lg">
-              <div className="text-md max-w-prose bg-gray-200 rounded-lg p-5 flex flex-col">
+              <div className="text-md max-w-prose bg-gray-200 rounded-lg p-5 flex flex-col w-screen">
                 <span className="font-bold text-md">{venue.name}</span>
                 <span className="text-gray-600 text-md">{venue.excerpt}</span>
                 <span className="my-1 border-t-2 border-gray-300" />
