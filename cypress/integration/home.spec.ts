@@ -1,32 +1,37 @@
 describe('home page', () => {
-  beforeEach(() => {
-    cy.visit('/');
-  });
-
   it('has navbar link to home page', () => {
+    cy.visit('/');
+
     cy.findByTestId('navbar').within(() => {
       cy.findByText('venue').and('have.attr', 'href').and('equal', '/');
     });
   });
 
   it('displays appropriate error message when initial venue fetch fails', () => {
+    cy.visit('/');
+
     cy.findByText('Failed to retrieve venues.').should('not.exist');
 
     cy.intercept('/venues', {
       statusCode: 500,
       body: 'Error',
-    });
+    }).as('fetch');
+
+    cy.wait('@fetch');
 
     cy.findByText('Failed to retrieve venues.').should('be.visible');
     cy.findByText("Oops, something's gone wrong. Please try again.").should('be.visible');
   });
 
   it('displays all venues in the response', () => {
+    cy.visit('/');
     cy.findByTestId('venue-id-1').should('not.exist');
 
     cy.intercept('/venues', {
       fixture: 'venues.json',
-    });
+    }).as('fetch');
+
+    cy.wait('@fetch');
 
     cy.findByTestId('venue-id-1').within(() => {
       cy.findByText('Almost Famous').should('be.visible');
@@ -95,7 +100,11 @@ describe('home page', () => {
   it('filter the displayed venues based on the search value', () => {
     cy.intercept('/venues', {
       fixture: 'venues.json',
-    });
+    }).as('fetch');
+
+    cy.visit('/');
+
+    cy.wait('@fetch');
 
     cy.findByText('Almost Famous').should('be.visible');
     cy.findByText('Angelica').should('be.visible');
